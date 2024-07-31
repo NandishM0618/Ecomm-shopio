@@ -1,0 +1,16 @@
+.data-grid .MuiDataGrid-root {
+  border: none;
+}
+
+.data-grid .MuiDataGrid-cell {
+  border-bottom: none;
+}
+
+.data-grid .MuiDataGrid-columnHeaders {
+  background-color: #f3f4f6;
+  border-bottom: none;
+}
+
+.data-grid .MuiDataGrid-footerContainer {
+  border-top: none;
+}

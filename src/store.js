@@ -1,33 +1,79 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { userReducer } from "./redux/reducers/userReducer";
+import thunk from "redux-thunk";
 import {
+  allRecentProductReducer,
+  deleteProductReducer,
+  deleteReviewReducer,
+  newProductReducer,
+  newReviewReducer,
   productDetailsReducer,
-  productReducer,
+  productReviewsReducer,
+  productsReducer,
 } from "./redux/reducers/productReducers";
-import { cartReducer } from "./redux/reducers/cartReducer";
 import {
+  allUsersReducer,
+  forgotPasswordReducer,
+  profileReducer,
+  userDetailsReducer,
+  userReducer,
+} from "./redux/reducers/userReducer";
+import { cartReducer } from "./redux/reducers/cartReducer";
+import { favouriteReducer } from "./redux/reducers/favReducer";
+import {
+  allOrdersReducer,
+  myOrdersReducer,
   newOrderReducer,
   orderDetailsReducer,
+  orderReducer,
 } from "./redux/reducers/orderReducer";
-import { myOrders } from "./redux/actions/orderAction";
 
 const reducer = combineReducers({
-  products: productReducer,
+  recentProducts: allRecentProductReducer,
+  products: productsReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
+  profile: profileReducer,
   cart: cartReducer,
-  newOrder: newOrderReducer,
-  orderDetails: orderDetailsReducer,
-  myOrders: myOrders,
+  favourite: favouriteReducer,
+  newReview: newReviewReducer,
+  createProduct: newProductReducer,
+  deleteProduct: deleteProductReducer,
+  AllOrders: allOrdersReducer,
+  deleteOrder: orderReducer,
+  order: newOrderReducer,
+  myOrder: myOrdersReducer,
+  myOrderDetails: orderDetailsReducer,
+  allUsers: allUsersReducer,
+  userDetails: userDetailsReducer,
+  deleteReview: deleteReviewReducer,
+  productReviews: productReviewsReducer,
+  forgotPassword: forgotPasswordReducer,
 });
 
-const middleware = [thunk];
+let initialState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : {},
+  },
+  favourite: {
+    favouriteItems: localStorage.getItem("favouriteItems")
+      ? JSON.parse(localStorage.getItem("favouriteItems"))
+      : [],
+  },
+};
+
+const middleWare = [thunk];
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(...middleware))
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleWare))
 );
 
 export default store;
