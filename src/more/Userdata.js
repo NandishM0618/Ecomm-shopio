@@ -117,7 +117,7 @@ const UserData = () => {
         icon={
           <img
             className=" w-14 h-14 rounded-full object-cover"
-            src={user.avatar.url ? user.avatar.url : "/profile.png"}
+            src={user?.avatar.url ? user?.avatar.url : "/profile.png"}
             alt="Profile"
             style={{
               position: "fixed",
