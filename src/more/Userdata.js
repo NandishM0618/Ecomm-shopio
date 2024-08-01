@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { logout } from "../redux/actions/userAction";
-// import "./UserOption.css";
 
 const UserData = () => {
   const { user } = useSelector((state) => state.user);
@@ -57,14 +56,14 @@ const UserData = () => {
     { icon: <ExitToApp />, name: "Logout-button", func: logoutUser },
   ];
 
-  if (user.role === "admin") {
+  if (user?.role === "admin") {
     options.unshift({
       icon: <Dashboard />,
       name: "Dashboard",
       func: dashboard,
     });
   }
-  if (user.role === "Creator") {
+  if (user?.role === "Creator") {
     options.unshift({
       icon: <Dashboard />,
       name: "Dashboard",
