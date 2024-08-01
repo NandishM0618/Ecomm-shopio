@@ -50,6 +50,7 @@ export const login = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
+    localStorage.setItem('authToken', data.token);
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
@@ -79,9 +80,23 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
     // eslint-disable-next-line
-    const config = { headers: { "Content-Type": "application/json" } };
+    const token = localStorage.getItem('authToken');
 
-    const { data } = await axios.get(`https://backend-shopio.onrender.com/api/v2/me`);
+    // Ensure token is available
+    if (!token) {
+      throw new Error('No authentication token found');
+    }
+
+    // Set the config with Authorization header
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    };
+
+    // Make the API request with the config
+    const { data } = await axios.get(`https://backend-shopio.onrender.com/api/v2/me`, config);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
