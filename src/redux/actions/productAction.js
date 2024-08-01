@@ -42,10 +42,10 @@ export const getProduct =
         type: ALL_PRODUCT_REQUEST,
       });
 
-      let link = `/api/v2/products?keyword=${keyword}&page=${currentPage}`;
+      let link = `https://backend-shopio.onrender.com/api/v2/products?keyword=${keyword}&page=${currentPage}`;
 
       if (category) {
-        link = `/api/v2/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
+        link = `https://backend-shopio.onrender.com/api/v2/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
       }
       const { data } = await axios.get(link);
 
@@ -65,7 +65,7 @@ export const getProduct =
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_RECENT_PRODUCT_REQUEST });
-    const { data } = await axios.get(`/api/v2/products/recent`);
+    const { data } = await axios.get(`https://backend-shopio.onrender.com/api/v2/products/recent`);
 
     dispatch({ type: ALL_RECENT_PRODUCT_SUCCESS, payload: data.products });
   } catch (error) {
@@ -81,7 +81,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/v2/product/${id}`);
+    const { data } = await axios.get(`https://backend-shopio.onrender.com/api/v2/product/${id}`);
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -105,7 +105,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v2/product/review`,
+      `https://backend-shopio.onrender.com/api/v2/product/review`,
       reviewData,
       config
     );
@@ -132,7 +132,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v2/product/new`,
+      `https://backend-shopio.onrender.com/api/v2/product/new`,
       productData,
       config
     );
@@ -154,7 +154,7 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("/api/v2/admin/products");
+    const { data } = await axios.get("https://backend-shopio.onrender.com/api/v2/admin/products");
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -173,7 +173,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`/api/v2/product/${id}`);
+    const { data } = await axios.delete(`https://backend-shopio.onrender.com/api/v2/product/${id}`);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -197,7 +197,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v2/product/${id}`,
+      `https://backend-shopio.onrender.com/api/v2/product/${id}`,
       productData,
       config
     );
@@ -219,7 +219,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`/api/v2/reviews?id=${id}`);
+    const { data } = await axios.get(`https://backend-shopio.onrender.com/api/v2/reviews?id=${id}`);
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -239,7 +239,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(
-      `/api/v2/reviews?id=${reviewId}&productId=${productId}`
+      `https://backend-shopio.onrender.com/api/v2/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({
