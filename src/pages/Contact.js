@@ -26,7 +26,7 @@ const Contact = () => {
             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
           </svg>
           <strong className="text-gray-700">
-            Email: <span className="text-gray-600">iasraful107@gmail.com</span>
+            Email: <span className="text-gray-600">nandish1729@gmail.com</span>
           </strong>
         </div>
         <div className="flex items-center mb-4 space-x-2">
@@ -44,12 +44,12 @@ const Contact = () => {
           <strong className="text-gray-700">
             Address:{" "}
             <span className="text-gray-600">
-              560065, Koramangala, Bangalore, Karnataka
+              560100, Electronic city, Bangalore, Karnataka
             </span>
           </strong>
         </div>
         <p className="text-gray-600 mb-4">
-          The Live chat support option is coming soon....
+            Additional features are coming soon...
         </p>
         <h2 className="text-xl font-semibold text-gray-700 mb-4">
           You can also find us here:
